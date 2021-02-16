@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <!-- Importamos el JQUERY -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- .container.seccion -->
+    <div class="container section">
+        <!-- NavBar -->
+        <nav class="blue darken-3">
+            <div class="nav-wrapper">
+              <a href="#!" class="brand-logo">
+                  <img src="img/user_image.png" class="circle" width="65" height="auto"></img>
+              </a>
+              <ul class="right hide-on-med-and-down">
+                <li><a href="sass.html"><i class="material-icons">search</i></a></li>
+                <li><a href="badges.html"><i class="material-icons">view_module</i></a></li>
+                <li><a href="collapsible.html"><i class="material-icons">refresh</i></a></li>
+                <li><a href="mobile.html"><i class="material-icons">more_vert</i></a></li>
+              </ul>
+            </div>
+        </nav>
+        <form id="formid">
+            <!-- Sección Formulario -->
+            <div class="section">
+                <div class="row">
+                    <div class="input-field col s6">
+                        <i class="material-icons prefix">face</i>
+                        <input type="text" name="user_name" id="user_name" class="icon-prefix validate">
+                        <label for="user_name">Nombre de Usuario</label>
+                    </div>
+                    <!-- lista desplegable -->
+                    <div class="input-field col s6">
+                        <select name="imgSelect" id="imgSelect" class="browser-default" onchange="selectGroup()">
+                            <option value="" disabled selected>Seleccione una opción</option>
+                            <option value="1">Grupo de imagénes 1</option>
+                            <option value="2">Grupo de imagénes 2</option>
+                            <option value="3">Grupo de imagénes 3</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sección de checkbox -->
+            <div class="section">
+                <div class="row">
+                    <div class="col s2">
+                        <label class="checkeable">
+                            <input type="checkbox" name="imagenesSeleccionadas[]" value="1" id="1">
+                            <img class="responsive-img circle" src="img/non-selected.png" alt="" name="casillas[]">
+                        </label>
+                    </div>
+                    <div class="col s2">
+                        <label class="checkeable"> 
+                            <input type="checkbox" name="imagenesSeleccionadas[]" value="2" id="2">
+                            <img class="responsive-img circle" src="img/non-selected.png" alt="" name="casillas[]">
+                        </label>
+                    </div>
+                    <div class="col s2">
+                        <label class="checkeable">
+                            <input type="checkbox" name="imagenesSeleccionadas[]" value="3" id="3">
+                            <img class="responsive-img circle" src="img/non-selected.png" alt="" name="casillas[]">
+                        </label>
+                    </div>
+                    <div class="col s2">
+                        <label class="checkeable">
+                            <input type="checkbox" name="imagenesSeleccionadas[]" value="4" id="4">
+                            <img class="responsive-img circle" src="img/non-selected.png" alt="" name="casillas[]">
+                        </label>
+                    </div>
+                    <div class="col s2">
+                        <label class="checkeable">
+                            <input type="checkbox" name="imagenesSeleccionadas[]" value="5" id="5">
+                            <img class="responsive-img circle" src="img/non-selected.png" alt="" name="casillas[]">
+                        </label>
+                    </div>
+                    <div class="col s2">
+                        <label class="checkeable">
+                            <input type="checkbox" name="imagenesSeleccionadas[]" value="6" id="6">
+                            <img class="responsive-img circle" src="img/non-selected.png" alt="" name="casillas[]">
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sección botón -->
+            <div class="section">
+                <div class="row center">
+                    <button class="btn waves-effect waves-light blue darken-3" id="enviar" onclick="realizeProcess()">Ordenar
+                        <i class="material-icons right">article</i>
+                    </button>
+                </div>
+            </div>
+        </form>
+
+        <!-- Sección algoritmos de ordenamientos -->
+        <div class="section">
+            <!-- Lista desplegable -->
+            <div class="row center">
+                <div class="input-field col s6">
+                    <select name="algoritmoSeleccionado" id="algoritmoSeleccionado" class="browser-default">
+                        <option value="" disabled selected>Seleccione una opción</option>
+                        <option value="1">Burbuja</option>
+                        <option value="2">Inserción<nav></nav></option>
+                        <option value="3">Selección</option>
+                    </select>
+                </div>
+                <div class="input-field col s3">
+                    <label>
+                        <input class="with-gap" name="order" type="radio"  value="upward"/>
+                        <span>Ascendente</span>
+                    </label>
+                </div>
+                <div class="input-field col s3">
+                    <label>
+                        <input class="with-gap" name="order" type="radio"  value="downward"/>
+                        <span>Descendente</span>
+                    </label>
+                </div>
+            </div>
+            <div class="row center">
+                <div class="col">
+                    <output id = "algSelected">
+
+                    </output>
+                </div>  
+            </div>
+        </div>
+
+    </div>
+    <script src="js/algoritmosOrdenamiento.js"></script>
+    
+
+</body>
+
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#enviar').click(function(){
+            return false;
+        });
+    });
+</script>
+</html>
