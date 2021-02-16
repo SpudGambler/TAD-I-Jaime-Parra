@@ -92,7 +92,7 @@ function orderingProcess(alg,order){
 function bubbleUp(){
     var aux;
     for (let i = 0; i< selectionGroup.length; i++) {
-       for (let j = 0; j < selectionGroup.length; j++) {
+       for (let j = 0; j < selectionGroup.length - 1; j++) {
            if(selectionGroup[i].order < selectionGroup[j].order){
                aux = selectionGroup[i];
                selectionGroup[i] = selectionGroup[j];
@@ -106,7 +106,7 @@ function bubbleDown(){
     var input = document.getElementsByName('casillas[]');
     var aux;
     for (let i = 0; i< selectionGroup.length; i++) {
-       for (let j = 0; j < selectionGroup.length; j++) {
+       for (let j = 0; j < selectionGroup.length - 1; j++) {
            if(selectionGroup[i].order > selectionGroup[j].order){
                aux = selectionGroup[i];
                selectionGroup[i] = selectionGroup[j];
