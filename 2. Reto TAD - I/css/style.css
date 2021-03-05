@@ -1,0 +1,17 @@
+.checkeable input {
+    display: none;
+}
+
+.checkeable img {
+    width: 400px;
+    border: 5px solid transparent;
+}
+
+.img {
+    width: 400px;
+    border: 5px solid transparent;
+}
+
+.checkeable input:checked+img{
+    border-color: turquoise;
+}
