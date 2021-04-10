@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>Reto II TAD I</title>
+</head>
+
+<body>
+    <div class="container section">
+        <table class="striped">
+            <!-- Manejo de categorías en la tabla -->
+            <thead>
+                <!-- Insertar 1 fila con categorías -->
+                <tr>
+                    <th>Fuente</th>
+                    <th>Valores de los nodos</th>
+                </tr>
+            </thead>
+            <!-- Registros de la tabla -->
+            <tbody>
+                <!-- fila 1: Muestra info de un sólo registro -->
+                <tr>
+                    <td>
+                        <label>Cargar valores por defecto</label>
+                    </td>
+                    <td>
+                        <output id="listaPorDefault"></output>
+                    </td>
+                </tr>
+                <!-- fila 2: Solicitar valores ingresados por el usuario -->
+                <tr>
+                    <td>
+                        <div class="input-field">
+                            <input type="text" name="nodos" id="nodos">
+                            <label for="nodos">Ingrese los valores separados por ","</label>
+                        </div>
+                    </td>
+                    <!-- Crear botón sin texto sólo icono -->
+                    <td>
+                        <a class="btn-floating btn-large waves-effect waves-light blue" onclick="capturaValorInputAnonima()">
+                            <i class="material-icons">add</i>
+                        </a>
+                        <output id="nodosIngresados"></output>
+                    </td>
+                </tr>
+                <!-- fila 3 -->
+                <tr>
+                    <td>
+                        <!-- Crear botón para el cargue de multiples imagenes -->
+                        <div class="file-field input-field">
+                            <div class="btn">
+                                <span>Cargar imgs</span>
+                                <input type="file" name="files[]" id="files" multiple>
+                            </div>
+                            <!-- Muestra el nombre de las imagenes seleccionadas -->
+                            <div class="file-path-wrapper">
+                                <input type="text" class="file-path validate" id="nameImage">
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <output id="list"></output>
+                    </td>
+                </tr>
+                <!-- fila 4 -->
+                <tr>
+                    <td>
+                        <!-- campo input:file -->
+                        <div class="file-field input-field">
+                            <div class="btn">
+                                <span>Cargar txt</span>
+                                <input type="file" id="myInput">
+                            </div>
+                            <div class="file-path-wrapper">
+                                <input class="file-path validate" type="text" id="nameText">
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <!-- Ver contenido del txt -->
+                        <label>Contenido del archivo:</label>
+                        <output id="ver"></output>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <!-- Sección del botón -->
+        <div class="section">
+            <div class="row center">
+                <div class="col s12">
+                    <button class="btn waves-effect waves-lght btn-large blue" onclick="crearLista()">Crear lista</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sección que muestra la lista -->
+        <div class="section">
+            <div class="row center">
+                <div class="col s12">
+                    <output id="nuevaLista">&nbsp</output>
+                </div>
+            </div>
+        </div>
+        <!-- Lista desplegable -->
+        <div class="section">
+            <div class="row">
+                <div class="col s8">
+                    <select class="browser-default" name="functionSelected" id="functionSelected" onchange="showSelected()">
+                        <option value="" disabled selected>Seleccione una opción</option>
+                        <option value="1">Añadir nodo</option>
+                        <option value="2">Eliminar nodo</option>
+                        <option value="3">Consultar valor de nodo</option>
+                        <option value="4">Eliminar nodo en determinada posición</option>
+                        <option value="5">Eliminar nodo que contenga el valor</option>
+                        <option value="6">Modificar valor de un nodo determinado</option>
+                        <option value="7">Añadir nodo en determinada posición</option>
+                        <option value="8">Invertir orden de la lista</option>
+                    </select>
+                </div>
+                <div class="col s4">
+                    <p>
+                        <label>
+                            <input class="with-gap" name="order" type="radio"  value="begin"/>
+                            <span>Inicio De La Lista</span>
+                        </label>
+                    </p>
+                    <p>
+                        <label>
+                            <input class="with-gap" name="order" type="radio"  value="end"/>
+                            <span>Final De La Lista</span>
+                        </label>
+                    </p>
+                </div>
+            </div>
+            <div class="row center">
+                <!-- Parametros métodos listas simples -->
+                <div class="col s8">
+                    <input type="text" name="valorN" id="valorN"> <label for="valorN">Valor nodo</label>
+                </div>
+                <div class="col s4">
+                    <input type="number" name="posicionN" id="posicionN"> <label for="posicionN">Posición nodo</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sección de aceptar y mostrar lista resultante -->
+        <div class="section">
+            <div class="row center">
+                <div class="col s12">
+                    <button class="btn waves-effect waves-lght btn-large blue" onclick="listaResultante()">Ver lista resultante</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sección que muestra la lista resultante -->
+        <div class="section">
+            <div class="row center">
+                <div class="col s12">
+                    <output id="listaResultado">&nbsp</output>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="js/singleLinkedList.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+</html>
